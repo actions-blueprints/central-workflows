@@ -19,6 +19,20 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
   
+  configuration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Read Config
+        uses: pietrobolcato/action-read-yaml@1.0.0
+        id: config
+        with:
+          config: ${{ github.workspace }}/.github/ci-config.yml      
+      - name: Show config
+        run: |
+          echo Flavour: ${{ steps.config.outputs['central-ci.flavour'] }}
+  
   call-workflow-passing-data:
     uses: octodemo/helaili-workflow-playground/.github/workflows/reusable.yml@main
     with:

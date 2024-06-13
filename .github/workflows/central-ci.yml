@@ -21,22 +21,25 @@ jobs:
   
   configuration:
     runs-on: ubuntu-latest
+    outputs:
+      central-ci-flavour: ${{ steps.central-ci.outputs['central-ci.flavour'] }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Read Config
         uses: nichmor/minimal-read-yaml@v0.0.2
-        id: config
+        id: central-ci
         with:
           config: ${{ github.workspace }}/.github/ci-config.yml
       - name: Show config
         run: |
-          echo Flavour: ${{ steps.config.outputs['central-ci.flavour'] }}
+          echo Flavour: ${{ steps.central-ci.outputs['central-ci.flavour'] }}
   
   call-workflow-passing-data:
+    needs: configuration
     uses: octodemo/helaili-workflow-playground/.github/workflows/reusable.yml@main
     with:
-      flavour: "chocolate"
+      flavour: ${{ needs.configuration.outputs.central-ci-flavour }}
 
 
       

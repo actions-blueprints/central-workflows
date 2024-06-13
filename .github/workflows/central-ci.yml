@@ -25,13 +25,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Read Config
-        uses: pietrobolcato/action-read-yaml@1.0.0
+        uses: pietrobolcato/action-read-yaml@1.1.0
         id: config
         with:
-          config: ${{ github.workspace }}/.github/ci-config.yml      
+          config: ${{ github.workspace }}/.github/ci-config.yml
+          key-path: '^scentral-ci'
       - name: Show config
         run: |
-          echo Flavour: ${{ steps.config.outputs['central-ci.flavour'] }}
+          echo Flavour: ${{ steps.config.outputs['flavour'] }}
   
   call-workflow-passing-data:
     uses: octodemo/helaili-workflow-playground/.github/workflows/reusable.yml@main

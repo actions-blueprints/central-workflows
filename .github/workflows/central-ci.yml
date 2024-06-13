@@ -18,5 +18,11 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo Hello, world!
+  
+  call-workflow-passing-data:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      flavour: "chocolate"
+
 
       

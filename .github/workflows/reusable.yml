@@ -6,6 +6,12 @@ on:
         type: string
 
 jobs:
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo 'hello world'
+  
   reusable_workflow_job_chocolate:
     if: ${{ inputs.flavour == 'chocolate' }}
     runs-on: ubuntu-latest

@@ -7,14 +7,14 @@ on:
 
 jobs:
   reusable_workflow_job_chocolate:
-    if: ${{ github.event.inputs.flavour == 'chocolate' }}
+    if: ${{ inputs.flavour == 'chocolate' }}
     runs-on: ubuntu-latest
     environment: production
     steps:
       - run: echo 'hello world'
   
   reusable_workflow_job_vanilla:
-    if: ${{ github.event.inputs.flavour == 'vanilla' }}
+    if: ${{ inputs.flavour == 'vanilla' }}
     runs-on: ubuntu-latest
     environment: production
     steps:

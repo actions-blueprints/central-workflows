@@ -1,8 +1,20 @@
 on:
   workflow_call:
+    inputs:
+      flavour:
+        required: true
+        type: string
 
 jobs:
-  reusable_workflow_job:
+  reusable_workflow_job_chocolate:
+    if: ${{ github.event.inputs.flavour == 'chocolate' }}
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo 'hello world'
+  
+  reusable_workflow_job_vanilla:
+    if: ${{ github.event.inputs.flavour == 'vanilla' }}
     runs-on: ubuntu-latest
     environment: production
     steps:

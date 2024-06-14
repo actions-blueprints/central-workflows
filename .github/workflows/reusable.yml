@@ -14,15 +14,9 @@ jobs:
   
   reusable_workflow_job_chocolate:
     if: ${{ inputs.flavour == 'chocolate' }}
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - run: echo 'hello world'
+    uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-chocolate.yml@main
   
   reusable_workflow_job_vanilla:
     if: ${{ inputs.flavour == 'vanilla' }}
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - run: echo 'hello world'
+    uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-vanilla.yml@main
     

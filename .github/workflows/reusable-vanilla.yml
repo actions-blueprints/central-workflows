@@ -1,0 +1,9 @@
+on:
+  workflow_call:
+
+jobs:
+  chocolate:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo 'hello world'

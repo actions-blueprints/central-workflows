@@ -6,17 +6,20 @@ on:
         type: string
 
 jobs:
-  reusable_workflow_job:
+  build:
+    name: Common Build Steps
     runs-on: ubuntu-latest
     environment: production
     steps:
       - run: echo 'hello world'
   
-  reusable_workflow_job_chocolate:
+  build_chocolate:
+    name: Chocolate Build
     if: ${{ inputs.flavour == 'chocolate' }}
     uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-chocolate.yml@main
   
-  reusable_workflow_job_vanilla:
+  build_vanilla:
+    name: Vanilla Build
     if: ${{ inputs.flavour == 'vanilla' }}
     uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-vanilla.yml@main
     

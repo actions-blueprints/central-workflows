@@ -22,11 +22,9 @@ jobs:
         run: |
           if [ -z "${{ inputs.flavour }}" ]; then
             echo "::error ::Flavour not set"
-            exit 1
           fi
           if [ "${{ inputs.flavour }}" != "chocolate" ] && [ "${{ inputs.flavour }}" != "vanilla" ]; then
             echo "::error ::Unexpected flavour value: ${{ inputs.flavour }}"
-            exit 1
           fi
   
   build_chocolate:

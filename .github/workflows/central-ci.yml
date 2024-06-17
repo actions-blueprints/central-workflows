@@ -40,7 +40,7 @@ jobs:
       - name: Check config set 
         run: |
           if [ -z "${{ steps.central-ci.outputs['central-ci.flavour'] }}" ]; then
-            echo "Flavour not set"
+            echo "::error ::Flavour not set in .github/ci-config.yml"
             exit 1
           fi
   

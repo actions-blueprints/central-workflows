@@ -21,11 +21,11 @@ jobs:
       - name: Check config set 
         run: |
           if [ -z "${{ inputs.flavour }}" ]; then
-            echo "Flavour not set"
+            echo "::error ::Flavour not set"
             exit 1
           fi
           if [ "${{ inputs.flavour }}" != "chocolate" ] && [ "${{ inputs.flavour }}" != "vanilla" ]; then
-            echo "Invalid flavour"
+            echo "::error ::Unexpected flavour value: ${{ inputs.flavour }}"
             exit 1
           fi
   

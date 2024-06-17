@@ -7,8 +7,8 @@ on:
 
 jobs:
   # Raise an error if the flavour is not set
-  build-config-check:
-    name: Check config set
+  common-build:
+    name: Common Build Steps
     runs-on: ubuntu-latest
     steps:
       - name: Check config set 
@@ -21,24 +21,17 @@ jobs:
             echo "::error ::Unexpected flavour value: ${{ inputs.flavour }}"
             exit 1
           fi
-
-  build:
-    name: Common Build Steps
-    needs: build-config-check
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
       - run: echo 'hello world'
   
   build_chocolate:
     name: Chocolate Build
-    needs: build-config-check
+    needs: common-build
     if: ${{ inputs.flavour == 'chocolate' }}
     uses: actions-blueprints/central-workflows/.github/workflows/reusable-chocolate.yml@main
   
   build_vanilla:
     name: Vanilla Build
-    needs: build-config-check
+    needs: common-build
     if: ${{ inputs.flavour == 'vanilla' }}
     uses: actions-blueprints/central-workflows/.github/workflows/reusable-vanilla.yml@main
     

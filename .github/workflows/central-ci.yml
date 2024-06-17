@@ -36,6 +36,13 @@ jobs:
       - name: Show config
         run: |
           echo Flavour: ${{ steps.central-ci.outputs['central-ci.flavour'] }}
+      # Raise an error if the flavour is not set
+      - name: Check config set 
+        run: |
+          if [ -z "${{ steps.central-ci.outputs['central-ci.flavour'] }}" ]; then
+            echo "Flavour not set"
+            exit 1
+          fi
   
   build:
     name: Central CI Build

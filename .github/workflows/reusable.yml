@@ -13,6 +13,22 @@ jobs:
     steps:
       - run: echo 'hello world'
   
+  # Raise an error if the flavour is not set
+  build-config-check:
+    name: Check config set
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check config set 
+        run: |
+          if [ -z "${{ inputs.flavour }}" ]; then
+            echo "Flavour not set"
+            exit 1
+          fi
+          if [ "${{ inputs.flavour }}" != "chocolate" ] && [ "${{ inputs.flavour }}" != "vanilla" ]; then
+            echo "Invalid flavour"
+            exit 1
+          fi
+  
   build_chocolate:
     name: Chocolate Build
     if: ${{ inputs.flavour == 'chocolate' }}

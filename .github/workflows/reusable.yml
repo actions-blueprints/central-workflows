@@ -16,10 +16,10 @@ jobs:
   build_chocolate:
     name: Chocolate Build
     if: ${{ inputs.flavour == 'chocolate' }}
-    uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-chocolate.yml@main
+    uses: actions-blueprints/central-workflows/.github/workflows/reusable-chocolate.yml@main
   
   build_vanilla:
     name: Vanilla Build
     if: ${{ inputs.flavour == 'vanilla' }}
-    uses: octodemo/helaili-workflow-playground/.github/workflows/reusable-vanilla.yml@main
+    uses: actions-blueprints/central-workflows/.github/workflows/reusable-vanilla.yml@main
     

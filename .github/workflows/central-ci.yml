@@ -40,7 +40,7 @@ jobs:
   build:
     name: Central CI Build
     needs: configuration
-    uses: octodemo/helaili-workflow-playground/.github/workflows/reusable.yml@main
+    uses: actions-blueprints/central-workflows/.github/workflows/reusable.yml@main
     with:
       flavour: ${{ needs.configuration.outputs.central-ci-flavour }}
 

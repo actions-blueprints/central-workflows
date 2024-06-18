@@ -34,4 +34,11 @@ jobs:
     needs: common-build
     if: ${{ inputs.flavour == 'vanilla' }}
     uses: actions-blueprints/central-workflows/.github/workflows/reusable-vanilla.yml@main
+
+  build_end:
+    name: End Build
+    needs: [build_chocolate, build_vanilla]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Build complete'
     
